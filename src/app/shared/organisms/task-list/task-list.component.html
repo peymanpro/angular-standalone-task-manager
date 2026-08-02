@@ -1,0 +1,32 @@
+<div class="task-list-container">
+  <div class="filters">
+    <app-button 
+      [text]="'همه'" 
+      [type]="filter === 'all' ? 'primary' : 'secondary'" 
+      (clicked)="setFilter('all')"></app-button>
+    
+    <app-button 
+      [text]="'در حال انجام'" 
+      [type]="filter === 'active' ? 'primary' : 'secondary'" 
+      (clicked)="setFilter('active')"></app-button>
+    
+    <app-button 
+      [text]="'تکمیل شده'" 
+      [type]="filter === 'completed' ? 'primary' : 'secondary'" 
+      (clicked)="setFilter('completed')"></app-button>
+  </div>
+
+  <div class="tasks">
+    <app-task-item 
+      *ngFor="let task of filteredTasks" 
+      [task]="task"
+      (toggle)="onToggle($event)"
+      (delete)="onDelete($event)"
+      (edit)="onEdit($event)">
+    </app-task-item>
+
+    <div *ngIf="filteredTasks.length === 0" class="empty-state">
+      <p>هیچ تسک‌ای یافت نشد 😊</p>
+    </div>
+  </div>
+</div>
