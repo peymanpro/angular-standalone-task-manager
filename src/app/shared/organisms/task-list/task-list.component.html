@@ -22,11 +22,17 @@
       [task]="task"
       (toggle)="onToggle($event)"
       (delete)="onDelete($event)"
-      (edit)="onEdit($event)">
+      (edit)="onEdit($event)"> 
     </app-task-item>
 
     <div *ngIf="filteredTasks.length === 0" class="empty-state">
       <p>No tasks found</p>
     </div>
   </div>
+  <app-task-edit 
+    *ngIf="editingTask"
+    [task]="editingTask"
+    (save)="saveEdit($event)"
+    (cancel)="closeEdit()">
+  </app-task-edit>
 </div>
