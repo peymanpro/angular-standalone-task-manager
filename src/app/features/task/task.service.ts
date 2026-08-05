@@ -1,36 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-
+import { BehaviorSubject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { Task } from './task.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'https://dummyjson.com/todos';
-  private localTasks: Task[] = [];
+  private tasksSubject = new BehaviorSubject<Task[]>([]);
+  tasks$ = this.tasksSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.loadFromLocalStorage();
   }
 
-  // دریافت تسک‌ها از API + محلی
-  getTasks(): Observable<Task[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      // در صورت نیاز می‌توانیم ترکیب کنیم با localTasks
-    );
-  }
-
-  // برای سادگی فعلاً از LocalStorage + Dummy Data استفاده می‌کنیم
   getAllTasks(): Task[] {
-    return [...this.localTasks].sort((a, b) => 
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
+    return this.tasksSubject.getValue();
   }
 
-  addTask(title: string, description: string = '', priority: Task['priority'] = 'medium', dueDate?: string): Task {
+  addTask(
+    title: string,
+    description: string = '',
+    priority: Task['priority'] = 'medium',
+    dueDate?: string,
+  ): void {
     const newTask: Task = {
       id: uuidv4(),
       title,
@@ -38,31 +31,37 @@ export class TaskService {
       completed: false,
       priority,
       dueDate,
-      createdAt: new Date()
+      createdAt: new Date(),
     };
 
-    this.localTasks.push(newTask);
+    const current = this.tasksSubject.getValue();
+    this.tasksSubject.next([newTask, ...current]);
     this.saveToLocalStorage();
-    return newTask;
   }
 
   toggleComplete(id: string): void {
-    const task = this.localTasks.find(t => t.id === id);
+    const tasks = this.tasksSubject.getValue();
+    const task = tasks.find((t) => t.id === id);
     if (task) {
       task.completed = !task.completed;
+      this.tasksSubject.next([...tasks]);
       this.saveToLocalStorage();
     }
   }
 
   deleteTask(id: string): void {
-    this.localTasks = this.localTasks.filter(t => t.id !== id);
+    const tasks = this.tasksSubject.getValue();
+    const filtered = tasks.filter((t) => t.id !== id);
+    this.tasksSubject.next(filtered);
     this.saveToLocalStorage();
   }
 
   updateTask(id: string, updates: Partial<Task>): void {
-    const task = this.localTasks.find(t => t.id === id);
+    const tasks = this.tasksSubject.getValue();
+    const task = tasks.find((t) => t.id === id);
     if (task) {
       Object.assign(task, updates);
+      this.tasksSubject.next([...tasks]);
       this.saveToLocalStorage();
     }
   }
@@ -70,11 +69,18 @@ export class TaskService {
   private loadFromLocalStorage(): void {
     const saved = localStorage.getItem('tasks');
     if (saved) {
-      this.localTasks = JSON.parse(saved);
+      const tasks = JSON.parse(saved);
+
+      tasks.forEach((t: any) => (t.createdAt = new Date(t.createdAt)));
+      this.tasksSubject.next(tasks);
     }
   }
 
   private saveToLocalStorage(): void {
-    localStorage.setItem('tasks', JSON.stringify(this.localTasks));
+    const tasks = this.tasksSubject.getValue().map((t) => ({
+      ...t,
+      createdAt: t.createdAt.toISOString(),
+    }));
+    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 }

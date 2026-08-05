@@ -12,8 +12,6 @@ import { TaskService } from './features/task/task.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-standalone-task-manager';
-
   constructor(private taskService: TaskService) {}
 
   onTaskAdded(event: any) {
@@ -23,8 +21,5 @@ export class AppComponent {
       event.priority,
       event.dueDate
     );
-    
-    // لیست را رفرش می‌کنیم (از طریق EventEmitter بهتر است اما برای سادگی)
-    window.location.reload(); // موقتاً — در نسخه بعدی بهتر می‌کنیم
   }
 }
