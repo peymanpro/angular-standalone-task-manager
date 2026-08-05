@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskItemComponent } from '../../molecules/task-item/task-item.component';
+
 import { TaskService } from '../../../features/task/task.service';
-import { Task } from '../../../core/models/task.model';
+
 import { ButtonComponent } from '../../atoms/button/button.component';
+import { Task } from '../../../features/task/task.model';
+import { TaskItemComponent } from '../../molecules/task-item.component';
 
 @Component({
   selector: 'app-task-list',

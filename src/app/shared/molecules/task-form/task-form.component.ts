@@ -2,7 +2,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../atoms/button/button.component';
-import { Task } from '../../../core/models/task.model';
+import { Task } from '../../../features/task/task.model';
+
 
 @Component({
   selector: 'app-task-form',
