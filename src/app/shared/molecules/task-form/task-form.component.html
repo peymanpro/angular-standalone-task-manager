@@ -5,12 +5,14 @@
     <input 
       type="text" 
       [(ngModel)]="title" 
+      name="title"
       placeholder="Enter task title..."
       required
       class="input-title">
 
     <textarea 
       [(ngModel)]="description" 
+      name="description"
       placeholder="Description (optional)"
       rows="3"
       class="input-description"></textarea>
@@ -18,7 +20,7 @@
     <div class="form-row">
       <div class="form-group">
         <label>Priority</label>
-        <select [(ngModel)]="priority" class="select-priority">
+        <select [(ngModel)]="priority" name="priority" class="select-priority">
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
@@ -30,6 +32,7 @@
         <input 
           type="date" 
           [(ngModel)]="dueDate"
+          name="dueDate"
           class="input-date">
       </div>
     </div>
