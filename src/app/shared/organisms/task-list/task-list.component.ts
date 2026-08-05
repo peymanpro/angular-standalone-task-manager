@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { TaskService } from '../../../features/task/task.service';
-
 import { ButtonComponent } from '../../atoms/button/button.component';
 import { Task } from '../../../features/task/task.model';
 import { TaskItemComponent } from '../../molecules/task-item.component';
+
 
 @Component({
   selector: 'app-task-list',
@@ -22,12 +21,11 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
-    this.loadTasks();
-  }
-
-  loadTasks() {
-    this.tasks = this.taskService.getAllTasks();
-    this.applyFilter();
+    // عضویت در جریان داده‌های سرویس
+    this.taskService.tasks$.subscribe(tasks => {
+      this.tasks = tasks;
+      this.applyFilter();
+    });
   }
 
   applyFilter() {
@@ -42,22 +40,19 @@ export class TaskListComponent implements OnInit {
 
   onToggle(id: string) {
     this.taskService.toggleComplete(id);
-    this.loadTasks();
   }
 
   onDelete(id: string) {
-    if (confirm('آیا از حذف این تسک مطمئن هستید؟')) {
+    if (confirm('Are you sure you want to delete this task?')) {
       this.taskService.deleteTask(id);
-      this.loadTasks();
     }
   }
 
   onEdit(task: Task) {
-    // فعلاً ساده پیاده‌سازی می‌شود (در مراحل بعدی کامل می‌شود)
-    const newTitle = prompt('عنوان جدید:', task.title);
+    // فعلاً همان prompt است، در فاز ۲ عوض می‌شود
+    const newTitle = prompt('New title:', task.title);
     if (newTitle && newTitle.trim()) {
       this.taskService.updateTask(task.id, { title: newTitle.trim() });
-      this.loadTasks();
     }
   }
 
