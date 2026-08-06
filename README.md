@@ -14,6 +14,9 @@ A modern task management application built with **Angular 19** using **Standalon
 ### Add New Task Modal
 ![Add New Task](./public/newtask.png)
 
+### Edit Task Modal
+![Add New Task](./public/edittask.png)
+
 ## ✨ Features
 
 - 📋 Add, edit, and delete tasks
