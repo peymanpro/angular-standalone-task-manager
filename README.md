@@ -3,7 +3,7 @@ markdown
 
 A modern task management application built with **Angular 19** using **Standalone Components** and **Atomic Design** pattern.
 
-![Task Manager Screenshot](./screenshot.png)
+![Task Manager Screenshot](./public/screenshot.png)
 
 ## ✨ Features
 
