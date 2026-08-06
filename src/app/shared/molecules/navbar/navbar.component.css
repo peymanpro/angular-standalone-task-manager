@@ -38,3 +38,34 @@
   background: #3b82f6;
   color: white;
 }
+
+.brand-icon-wrapper,
+.nav-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-icon-wrapper svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.nav-icon-wrapper svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}

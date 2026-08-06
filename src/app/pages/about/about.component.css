@@ -66,3 +66,23 @@
 .nav-links a.active .nav-icon {
   stroke: white;
 }
+
+.about-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+  color: #3b82f6;
+  display: block;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
