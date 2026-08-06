@@ -24,3 +24,16 @@
   font-weight: 600;
   margin: 0;
 }
+
+.header-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon-wrapper svg {
+  width: 28px;
+  height: 28px;
+  color: #3b82f6;      
+  display: block;
+}
