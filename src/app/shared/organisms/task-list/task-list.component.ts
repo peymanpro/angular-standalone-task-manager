@@ -5,7 +5,7 @@ import { TaskService } from '../../../features/task/task.service';
 import { ButtonComponent } from '../../atoms/button/button.component';
 import { Task } from '../../../features/task/task.model';
 import { TaskItemComponent } from '../../molecules/task-item/task-item.component';
-import { TaskEditComponent } from '../../molecules/task-edit/task-edit.component';
+import { TaskEditComponent } from '../../molecules/task-add-edit/task-edit.component';
 
 @Component({
   selector: 'app-task-list',

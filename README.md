@@ -1,59 +1,118 @@
-# AngularStandaloneTaskManager
+markdown
+# ✅ Angular Standalone Task Manager
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+A modern task management application built with **Angular 19** using **Standalone Components** and **Atomic Design** pattern.
 
-## Development server
+![Task Manager Screenshot](./screenshot.png)
 
-To start a local development server, run:
+## ✨ Features
+
+- 📋 Add, edit, and delete tasks
+- ✅ Mark tasks as complete / incomplete
+- 🔍 Filter tasks by status (All, Active, Completed)
+- 📱 Responsive design
+- 💾 Data persisted in localStorage
+- 🎨 Professional SVG icons
+- 🧭 Multi-page routing (Home, About, Task Manager)
+- 🎯 Reactive state management with BehaviorSubject
+
+## 🛠️ Tech Stack
+
+- Angular 19 (Standalone Components)
+- TypeScript
+- RxJS (BehaviorSubject)
+- HTML5 / CSS3 (Pure CSS)
+- Atomic Design pattern
+- UUID for unique IDs
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- Angular CLI
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/angular-standalone-task-manager.git
+
+# Navigate to project directory
+cd angular-standalone-task-manager
+
+# Install dependencies
+npm install
+
+# Run development server
 ng serve
-```
+Navigate to http://localhost:4200/ to view the application.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+📁 Project Structure
+text
+src/app/
+├── features/
+│   └── task/
+│       ├── task.model.ts          # Task interface
+│       └── task.service.ts        # State management with BehaviorSubject
+├── pages/
+│   ├── home/                      # Landing page
+│   ├── about/                     # About page
+│   └── task-manager/              # Main task management page
+└── shared/
+    ├── atoms/
+    │   └── button/                # Reusable button component
+    └── molecules/
+        ├── task-item/             # Individual task display
+        ├── task-edit/             # Add/Edit modal
+        └── navbar/                # Navigation bar
+🎯 Key Features Explained
+Task Management
+Add Task: Click the "Add New Task" button to open a modal form
 
-## Code scaffolding
+Edit Task: Click the edit icon on any task to modify details
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Delete Task: Remove tasks with a confirmation dialog
 
-```bash
-ng generate component component-name
-```
+Complete Task: Toggle task status with a checkbox
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Filtering
+Filter tasks by status using the dropdown selector
 
-```bash
-ng generate --help
-```
+Default filter shows Active tasks (incomplete)
 
-## Building
+Routing
+Home: Landing page with welcome message
 
-To build the project run:
+About: Project information
 
-```bash
+Task Manager: Full task management interface
+
+📦 Build
+bash
+# Production build
+ng build --configuration production
+
+# Development build
 ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
+🧪 Testing
+bash
+# Unit tests
 ng test
-```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
+# End-to-end tests (coming soon)
 ng e2e
-```
+📝 Commit History
+This project follows a clean commit history with meaningful messages:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+text
+feat(task-list): enhance task management with modal add, dropdown filter, and updated navbar layout
+fix(navbar,about): wrap SVG icons in span containers for better alignment and consistency
+feat(routing): add routing with Home and About pages
+fix(state): replace window.reload with BehaviorSubject and switch UI to English
+🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Additional Resources
+📄 License
+This project is licensed under the MIT License.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
