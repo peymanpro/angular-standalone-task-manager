@@ -1,14 +1,8 @@
 <div class="app-container">
-  <header class="header">
-    <h1> Task Manager</h1>
-    <p class="subtitle">Manage your tasks — Angular Standalone</p>
-  </header>
-
-  <main class="main-content">
-    <app-task-form (taskAdded)="onTaskAdded($event)"></app-task-form>
-    <app-task-list></app-task-list>
-  </main>
-
+  <app-navbar></app-navbar>
+  <div class="page-content">
+    <router-outlet></router-outlet>
+  </div>
   <footer class="footer">
     <p>Angular 19 • Standalone Components • Pure CSS • Atomic Design</p>
   </footer>

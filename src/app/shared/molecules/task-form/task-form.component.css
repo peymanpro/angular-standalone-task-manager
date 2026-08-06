@@ -45,3 +45,17 @@
   font-weight: 500;
   color: #374151;
 }
+
+.form-icon {
+  width: 24px;
+  height: 24px;
+  color: #3b82f6;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.task-form h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
