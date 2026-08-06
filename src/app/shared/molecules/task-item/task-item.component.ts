@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../atoms/button/button.component';
-import { Task } from '../../features/task/task.model';
+import { ButtonComponent } from '../../atoms/button/button.component';
+import { Task } from '../../../features/task/task.model';
+
 
 
 @Component({

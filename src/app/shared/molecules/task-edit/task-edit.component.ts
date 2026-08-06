@@ -13,13 +13,27 @@ import { ButtonComponent } from '../../atoms/button/button.component';
 })
 export class TaskEditComponent implements OnInit {
   @Input() task!: Task;
+  @Input() mode: 'edit' | 'add' = 'edit'; 
   @Output() save = new EventEmitter<Task>();
   @Output() cancel = new EventEmitter<void>();
 
   editedTask!: Task;
 
   ngOnInit() {
-    this.editedTask = { ...this.task };
+    if (this.mode === 'add') {
+
+      this.editedTask = {
+        id: '', 
+        title: '',
+        description: '',
+        completed: false,
+        priority: 'medium',
+        dueDate: '',
+        createdAt: new Date()
+      };
+    } else {
+      this.editedTask = { ...this.task };
+    }
   }
 
   onSubmit() {
@@ -30,5 +44,13 @@ export class TaskEditComponent implements OnInit {
 
   onCancel() {
     this.cancel.emit();
+  }
+
+  getTitle(): string {
+    return this.mode === 'add' ? 'Add New Task' : 'Edit Task';
+  }
+
+  getButtonText(): string {
+    return this.mode === 'add' ? 'Add Task' : 'Save Changes';
   }
 }
