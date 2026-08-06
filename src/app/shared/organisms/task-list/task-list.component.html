@@ -1,19 +1,14 @@
 <div class="task-list-container">
-  <div class="filters">
-    <app-button 
-      [text]="'All'" 
-      [type]="filter === 'all' ? 'primary' : 'secondary'" 
-      (clicked)="setFilter('all')"></app-button>
+  <div class="list-header">
+    <app-button text="+ Add New Task" type="primary" (clicked)="openAddModal()" class="add-btn"></app-button>
     
-    <app-button 
-      [text]="'Active'" 
-      [type]="filter === 'active' ? 'primary' : 'secondary'" 
-      (clicked)="setFilter('active')"></app-button>
-    
-    <app-button 
-      [text]="'Completed'" 
-      [type]="filter === 'completed' ? 'primary' : 'secondary'" 
-      (clicked)="setFilter('completed')"></app-button>
+    <div class="filter-wrapper">
+      <select [(ngModel)]="filter" (change)="applyFilter()" class="filter-select">
+        <option value="all">All</option>
+        <option value="active">Active</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
   </div>
 
   <div class="tasks">
@@ -22,16 +17,18 @@
       [task]="task"
       (toggle)="onToggle($event)"
       (delete)="onDelete($event)"
-      (edit)="onEdit($event)"> 
+      (edit)="onEdit($event)">
     </app-task-item>
 
     <div *ngIf="filteredTasks.length === 0" class="empty-state">
-      <p>No tasks found</p>
+      <p>No tasks found </p>
     </div>
   </div>
+
   <app-task-edit 
     *ngIf="editingTask"
     [task]="editingTask"
+    [mode]="editMode"
     (save)="saveEdit($event)"
     (cancel)="closeEdit()">
   </app-task-edit>

@@ -1,6 +1,6 @@
 <div class="modal-overlay" (click)="onCancel()">
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <h2>Edit Task</h2>
+    <h2>{{ getTitle() }}</h2>
     <form (ngSubmit)="onSubmit()">
       <input 
         type="text" 
@@ -31,7 +31,7 @@
       </div>
       <div class="modal-actions">
         <app-button text="Cancel" type="secondary" (clicked)="onCancel()"></app-button>
-        <app-button text="Save" type="primary" (clicked)="onSubmit()"></app-button>
+        <app-button [text]="getButtonText()" type="primary" (clicked)="onSubmit()"></app-button>
       </div>
     </form>
   </div>
