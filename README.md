@@ -3,6 +3,17 @@ markdown
 
 A modern task management application built with **Angular 19** using **Standalone Components** and **Atomic Design** pattern, featuring **NgRx** for state management demonstration.
 
+## 🖼️ Screenshots
+
+### Home Page
+![Home Page](./public/home.png)
+
+### My Task Manager
+![My Task Manager](./public/mytaskmanagement.png)
+
+### Add New Task Modal
+![Add New Task](./public/newtask.png)
+
 ## ✨ Features
 
 - 📋 Add, edit, and delete tasks
@@ -25,16 +36,7 @@ A modern task management application built with **Angular 19** using **Standalon
 - Atomic Design pattern
 - UUID for unique IDs
 
-## 🖼️ Screenshots
 
-### Home Page
-![Home Page](./public/home.png)
-
-### My Task Manager
-![My Task Manager](./public/mytaskmanagement.png)
-
-### Add New Task Modal
-![Add New Task](./public/newtask.png)
 
 ## 🚀 Quick Start
 
