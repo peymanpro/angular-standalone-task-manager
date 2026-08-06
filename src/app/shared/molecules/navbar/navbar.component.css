@@ -87,3 +87,14 @@
 .nav-links a.active .nav-icon-wrapper svg {
   stroke: white;
 }
+
+.badge {
+  background-color: red;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 4px;
+  line-height: 1.4;
+}

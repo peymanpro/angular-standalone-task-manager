@@ -28,9 +28,10 @@
         </svg>
       </span>
       <span>My Task Manager</span>
+       <span class="badge" *ngIf="(activeTasksCount$ | async) !== 0">
+        {{ activeTasksCount$ | async }}
+      </span>
     </a>
-
-
 
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <span class="nav-icon-wrapper">
